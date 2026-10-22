@@ -46,7 +46,7 @@ export default async function NewsDetailPage({ params }: DetailPageProps) {
 
   return (
     <main className="min-h-screen bg-white">
-      <div className="max-w-[1075px] mx-auto px-4 py-6">
+      <div className="max-w-[1075px] mx-auto py-6">
         
         {/* Breadcrumb Navigation */}
         <nav className="flex items-center gap-2 text-xs text-slate-500 mb-4">
