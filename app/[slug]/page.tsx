@@ -59,7 +59,7 @@ export default async function NewsDetailPage({ params }: DetailPageProps) {
           </Link>
           <span>/</span>
           <span className="text-slate-800 font-medium truncate max-w-[250px] sm:max-w-[400px]">
-            {news.title}
+            News
           </span>
         </nav>
 
