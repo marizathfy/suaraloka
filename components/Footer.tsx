@@ -1,8 +1,17 @@
+'use client';
+
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { categories } from "@/data/dummyNews";
 
 export default function Footer() {
+  const [year, setYear] = useState<number>(2026);
+
+  useEffect(() => {
+    setYear(new Date().getFullYear());
+  }, []);
+
   return (
     <footer className="bg-[#021B50] text-slate-300 mt-16 border-t border-blue-900">
       {/* Container Utama Footer */}
@@ -68,7 +77,6 @@ export default function Footer() {
 
           {/* 3. SEBELAH KANAN: Logo Rata Kiri dengan Card Putih Rapi & Deskripsi */}
           <div className="flex flex-col space-y-3 items-start text-left">
-            {/* Membungkus logo dengan container latar putih agar warna logo asli tampil kontras dan tajam */}
             <Link href="/" className="inline-block shrink-0 bg-white p-4 rounded-md shadow-sm">
               <Image 
                 src="/logo.png" 
@@ -91,8 +99,8 @@ export default function Footer() {
       {/* Baris Bawah: Copyright */}
       <div className="border-t border-blue-900/60 bg-[#01143d]">
         <div className="max-w-[1075px] mx-auto px-4 py-3 flex flex-col md:flex-row items-center justify-between text-[12px] text-slate-400 gap-2">
-          <p className="text-center md:text-left">
-            &copy; {new Date().getFullYear()} <strong className="text-white">Suaraloka.id</strong>. All Rights Reserved.
+          <p className="text-center md:text-left" suppressHydrationWarning>
+            &copy; {year} <strong className="text-white">Suaraloka.id</strong>. All Rights Reserved.
           </p>
 
           <div className="flex items-center space-x-3">

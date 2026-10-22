@@ -5,7 +5,7 @@ import PopularSidebar from "@/components/PopularSidebar";
 export default function HomePage() {
   return (
     <main className="min-h-screen bg-white">
-      <div className="max-w-[1075px] mx-auto px-4 py-6">
+      <div className="max-w-[1075px] mx-auto py-6">
         
         {/* 1. SEKSYEN HEADLINE ATAS */}
         <section>

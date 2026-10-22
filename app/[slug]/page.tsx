@@ -8,6 +8,13 @@ import NewsComment from "@/components/NewsComment";
 // Gabungkan seluruh data berita untuk carian
 const allNews = [...dummyHeadlineNews, ...dummyCategoryNews];
 
+export async function generateStaticParams() {
+  const allNews = [...dummyHeadlineNews, ...dummyCategoryNews];
+  return allNews.map((item) => ({
+    slug: item.slug,
+  }));
+}
+
 interface DetailPageProps {
   params: Promise<{
     slug: string;
@@ -39,7 +46,7 @@ export default async function NewsDetailPage({ params }: DetailPageProps) {
 
   return (
     <main className="min-h-screen bg-white">
-      <div className="max-w-[1075px] mx-auto py-6">
+      <div className="max-w-[1075px] mx-auto px-4 py-6">
         
         {/* Breadcrumb Navigation */}
         <nav className="flex items-center gap-2 text-xs text-slate-500 mb-4">
@@ -52,7 +59,7 @@ export default async function NewsDetailPage({ params }: DetailPageProps) {
           </Link>
           <span>/</span>
           <span className="text-slate-800 font-medium truncate max-w-[250px] sm:max-w-[400px]">
-            News
+            {news.title}
           </span>
         </nav>
 
@@ -69,12 +76,13 @@ export default async function NewsDetailPage({ params }: DetailPageProps) {
 
             {/* Category Badge & Meta Information */}
             <div className="flex items-center gap-2 mb-2">
-              <span>{news.category}</span>
-              <span className="text-slate-500 text-xs">10 Oktober 2025</span>
+              <span className="text-xs font-bold text-[#fe4203] uppercase tracking-wider">{news.category}</span>
+              <span className="text-slate-400">•</span>
+              <span className="text-slate-500 text-xs">{news.publishedAt || "10 Oktober 2025"}</span>
             </div>
 
             {/* Penulis & Share Button */}
-            <div className="flex items-center justify-between border-slate-100 py-3 mb-6">
+            <div className="flex items-center justify-between border-b border-slate-100 py-3 mb-6">
               <div className="flex items-center gap-2 text-xs text-slate-600">
                 <span>Oleh <strong className="text-slate-900">{news.author}</strong></span>
               </div>
@@ -118,7 +126,7 @@ export default async function NewsDetailPage({ params }: DetailPageProps) {
                   className="w-7 h-7 rounded-full bg-emerald-500 text-white flex items-center justify-center hover:opacity-90 transition-opacity"
                 >
                   <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074AN-.497-.248-1.608-.99-3.064-2.281-1.132-1.002-1.894-2.24-2.117-2.613-.223-.373-.024-.574.13-.745.133-.133.297-.347.445-.521.149-.174.198-.298.297-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+                    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.497-.248-1.608-.99-3.064-2.281-1.132-1.002-1.894-2.24-2.117-2.613-.223-.373-.024-.574.13-.745.133-.133.297-.347.445-.521.149-.174.198-.298.297-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
                   </svg>
                 </a>
               </div>
@@ -169,7 +177,6 @@ export default async function NewsDetailPage({ params }: DetailPageProps) {
 
             <NewsComment slug={slug} />
 
-            {/* SEKSI BERITA TERKAIT (DIJAMIN TEPAT 6 DATA) */}
             {/* SEKSI BERITA TERKAIT */}
             <div className="mt-10 pt-6 border-t-2 border-slate-900">
               <h3 className="font-bold text-slate-900 text-base uppercase tracking-wider mb-4">
