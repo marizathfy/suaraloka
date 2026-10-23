@@ -184,7 +184,7 @@ export default async function NewsDetailPage({ params }: DetailPageProps) {
               </h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 {relatedNews.map((item) => (
-                  <Link key={`rel-${item.id}`} href={`/${item.slug}`} className="group p-2 rounded-lg hover:bg-slate-50 transition-colors flex flex-col">
+                  <Link key={`rel-${item.id}`} href={`/${item.slug}`} className="group rounded-lg hover:bg-slate-50 transition-colors flex flex-col">
                     
                     {/* Kotak Gambar dengan Aspect Ratio Rasmi supaya TIDAK GEPENG */}
                     <div className="relative w-full aspect-video rounded-lg overflow-hidden mb-2 bg-slate-100">

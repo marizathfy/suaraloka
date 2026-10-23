@@ -9,7 +9,6 @@ export default function Navbar() {
   const [searchQuery, setSearchQuery] = useState("");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
   const [currentTime, setCurrentTime] = useState<Date | null>(null);
 
   // Set waktu real-time setiap saat (mencegah hydration mismatch)
@@ -19,20 +18,6 @@ export default function Navbar() {
       setCurrentTime(new Date());
     }, 1000);
     return () => clearInterval(timer);
-  }, []);
-
-  // Pantau aktivitas scroll halaman
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 40) {
-        setIsScrolled(true); // Header mengecil + aktifkan shadow saat discroll
-      } else {
-        setIsScrolled(false); // Default: bersih tanpa border & tanpa shadow
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const handleSearch = (e: React.FormEvent) => {
@@ -61,11 +46,9 @@ export default function Navbar() {
   };
 
   return (
-    <header className={`bg-white sticky top-0 z-50 transition-all duration-300 border-none ${
-      isScrolled ? "shadow-md py-1" : "shadow-none py-2"
-    }`}>
+    <header className="bg-white sticky top-0 z-50 transition-all duration-300 border-none shadow-md">
       {/* Main Header (Logo & Search) */}
-      <div className="max-w-[1080px] mx-auto flex items-center justify-between px-4">
+      <div className="max-w-[1075px] mx-auto flex items-center justify-between px-4 py-2">
         {/* Logo Kiri */}
         <Link href="/" className="flex items-center shrink-0">
           <Image 
@@ -74,9 +57,7 @@ export default function Navbar() {
             width={220} 
             height={85} 
             priority 
-            className={`object-contain transition-all duration-300 ${
-              isScrolled ? "w-28 sm:w-36 md:w-40" : "w-36 sm:w-48 md:w-56"
-            } h-auto`} 
+            className="object-contain w-36 sm:w-48 md:w-56 h-auto" 
           />
         </Link>
         
@@ -183,12 +164,8 @@ export default function Navbar() {
         </div>
       )}
 
-      {/* Desktop Navigation Bar - Sembunyi halus saat discroll */}
-      <nav 
-        className={`bg-[#021B50] text-white hidden md:block transition-all duration-300 overflow-hidden ${
-          isScrolled ? "max-h-0 opacity-0 py-0" : "max-h-20 opacity-100 py-2 mt-2"
-        }`}
-      >
+      {/* Desktop Navigation Bar - Selalu tampil stabil */}
+      <nav className="bg-[#021B50] text-white hidden md:block py-2">
         <div className="max-w-[1080px] mx-auto flex items-center justify-between px-4 text-xs font-semibold">
           {/* Menu Navigasi Kiri */}
           <div className="flex space-x-5 overflow-x-auto scrollbar-none py-1">
