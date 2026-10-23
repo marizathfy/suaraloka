@@ -7,7 +7,7 @@ export default function CategoryNewsList() {
     <div className="flex flex-col">
       {/* Header Seksyen Kategori */}
       <div className="flex items-center justify-between border-b-2 border-[#021B50] pb-2 mb-6">
-        <Link href="/indeks" className="text-xs font-semibold text-[#fe4203] hover:underline">
+        <Link href="/indeks" className="text-[15px] font-semibold text-[#fe4203] hover:underline">
           Indeks Lainnya &rarr;
         </Link>
       </div>

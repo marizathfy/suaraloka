@@ -35,7 +35,7 @@ export default function PopularSidebar() {
                 </div>
                 
                 <Link href={`/${news.slug}`}>
-                  <h4 className="text-slate-800 font-semibold text-[13px] sm:text-sm leading-snug hover:text-[#fe4203] transition-colors line-clamp-2">
+                  <h4 className="text-slate-800 font-semibold text-[14px] sm:text-sm leading-snug hover:text-[#fe4203] transition-colors line-clamp-2">
                     {news.title}
                   </h4>
                 </Link>

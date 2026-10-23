@@ -76,7 +76,7 @@ export default function HeroHeadline() {
                     </span>
                   </div>
                   <Link href={`/${news.slug}`}>
-                    <h3 className="text-slate-800 font-semibold text-[13px] sm:text-sm leading-snug hover:text-[#fe4203] transition-colors line-clamp-2">
+                    <h3 className="text-slate-800 font-semibold text-[14px] sm:text-sm leading-snug hover:text-[#fe4203] transition-colors line-clamp-2">
                       {news.title}
                     </h3>
                   </Link>

@@ -150,7 +150,7 @@ export default function IndeksPage() {
                       </div>
 
                       <Link href={`/${news.slug}`}>
-                        <h2 className="font-bold text-[13px] sm:text-base text-slate-900 hover:text-[#fe4203] transition-colors line-clamp-2 leading-snug mb-1">
+                        <h2 className="font-bold text-[14px] sm:text-base text-slate-900 hover:text-[#fe4203] transition-colors line-clamp-2 leading-snug mb-1">
                           {news.title}
                         </h2>
                       </Link>

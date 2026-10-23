@@ -90,7 +90,7 @@ async function CategoryContent({ params }: CategoryPageProps) {
                   </div>
 
                   <Link href={`/${news.slug}`}>
-                    <h2 className="font-bold text-xs sm:text-base text-slate-900 group-hover:text-[#fe4203] transition-colors line-clamp-2 leading-snug">
+                    <h2 className="font-bold text-[14px] sm:text-base text-slate-900 group-hover:text-[#fe4203] transition-colors line-clamp-2 leading-snug">
                       {news.title}
                     </h2>
                   </Link>

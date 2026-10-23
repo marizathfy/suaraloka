@@ -123,7 +123,7 @@ export default function InstagramEmbed() {
                 <span className="inline-block bg-[#fe4203] text-white text-[9px] font-extrabold px-1.5 py-0.5 rounded uppercase tracking-wider mb-1">
                   {post.title}
                 </span>
-                <p className="text-white text-[11px] font-bold leading-tight line-clamp-2 drop-shadow-xs">
+                <p className="text-white text-[13px] font-bold leading-tight line-clamp-2 drop-shadow-xs">
                   {post.subtitle}
                 </p>
               </div>
