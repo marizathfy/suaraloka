@@ -137,7 +137,7 @@ function CategorySkeleton() {
 export default function CategoryPage({ params }: CategoryPageProps) {
   return (
     <main className="min-h-screen pb-12 bg-white">
-      <div className="max-w-[1075px] mx-auto py-6 sm:px-0 px-4">
+      <div className="max-w-[1075px] mx-auto sm:px-0">
         <Suspense fallback={<CategorySkeleton />}>
           <CategoryContent params={params} />
         </Suspense>
