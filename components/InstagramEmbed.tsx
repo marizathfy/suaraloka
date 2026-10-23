@@ -24,7 +24,7 @@ const igPosts = [
     id: "post-3",
     title: "BREAKING NEWS!",
     subtitle: "Momen Persib tersungkur di Menit 89 Saat Hadapi Madura United",
-    imageUrl: "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=500&auto=format&fit=crop",
+    imageUrl: "https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=500&auto=format&fit=crop",
     link: "https://www.instagram.com/suaraloka.id",
     isVideo: true,
   },
