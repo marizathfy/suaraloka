@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { categories } from "@/data/dummyNews";
 
 export default function Navbar() {
@@ -10,6 +11,7 @@ export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [currentTime, setCurrentTime] = useState<Date | null>(null);
+  const pathname = usePathname();
 
   // Set waktu real-time
   useEffect(() => {
@@ -172,28 +174,44 @@ export default function Navbar() {
         </div>
       )}
 
-      {/* Desktop Navigation Bar (Hanya "Indeks" tanpa "Berita") */}
+      {/* Desktop Navigation Bar (Active Menu & Indeks Putih) */}
       <nav className="bg-[#021B50] text-white hidden md:block py-2">
         <div className="max-w-[1080px] mx-auto flex items-center justify-between px-4 text-xs font-semibold">
-          <div className="flex space-x-5 overflow-x-auto scrollbar-none py-1">
+          <div className="flex space-x-5 overflow-x-auto scrollbar-none py-1 items-center">
+            
+            {/* Menu Home */}
             <Link 
               href="/" 
-              className="hover:text-[#fe4203] transition-colors whitespace-nowrap text-[#fe4203]"
+              className={`transition-colors whitespace-nowrap ${
+                pathname === "/" ? "text-[#fe4203] font-bold" : "text-white hover:text-[#fe4203]"
+              }`}
             >
-              Beranda
+              Home
             </Link>
-            {categories.map((cat) => (
-              <Link
-                key={cat.slug}
-                href={`/kategori/${cat.slug}`}
-                className="hover:text-[#fe4203] transition-colors whitespace-nowrap"
-              >
-                {cat.name}
-              </Link>
-            ))}
+
+            {/* List Kategori */}
+            {categories.map((cat) => {
+              const categoryPath = `/kategori/${cat.slug}`;
+              const isActive = pathname === categoryPath;
+              return (
+                <Link
+                  key={cat.slug}
+                  href={categoryPath}
+                  className={`transition-colors whitespace-nowrap ${
+                    isActive ? "text-[#fe4203] font-bold" : "text-white hover:text-[#fe4203]"
+                  }`}
+                >
+                  {cat.name}
+                </Link>
+              );
+            })}
+
+            {/* Menu Indeks (Warna Putih, Active Kuning/Oranye) */}
             <Link 
               href="/indeks" 
-              className="hover:text-[#fe4203] transition-colors whitespace-nowrap text-amber-400"
+              className={`transition-colors whitespace-nowrap ${
+                pathname === "/indeks" ? "text-amber-400 font-bold" : "text-white hover:text-[#fe4203]"
+              }`}
             >
               Indeks
             </Link>
@@ -210,11 +228,11 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* MOBILE APP DRAWER MENU - WARNA PUTIH, TANPA SEARCH DI DALAM */}
+      {/* MOBILE APP DRAWER MENU - WARNA PUTIH, ACTIVE DINAMIS */}
       {isMenuOpen && (
         <div className="fixed inset-0 z-[100] md:hidden bg-white text-slate-800 flex flex-col justify-between overflow-y-auto animate-in fade-in duration-200">
           
-          {/* Header Drawer Sticky (Background Putih Bersih) */}
+          {/* Header Drawer Sticky */}
           <div className="p-4 border-b border-slate-100 flex items-center justify-between sticky top-0 bg-white/95 backdrop-blur-md z-10">
             <Link href="/" onClick={() => setIsMenuOpen(false)}>
               <Image 
@@ -238,7 +256,7 @@ export default function Navbar() {
             </button>
           </div>
 
-          {/* Isi Konten Menu Mobile (Tanpa Input Search) */}
+          {/* Isi Konten Menu Mobile */}
           <div className="p-5 flex-1 space-y-6">
             
             {/* Banner Jam & Tanggal */}
@@ -251,7 +269,7 @@ export default function Navbar() {
               </div>
             )}
 
-            {/* Grid Navigasi Kategori Berita (Tanpa Arrow) */}
+            {/* Grid Navigasi Kategori Berita */}
             <div>
               <div className="flex items-center justify-between mb-3">
                 <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400">Pilih Kategori</span>
@@ -259,46 +277,57 @@ export default function Navbar() {
               </div>
 
               <div className="grid grid-cols-2 gap-2.5">
-                {/* Menu Utama Beranda */}
+                {/* Menu Utama Home */}
                 <Link 
                   href="/" 
                   onClick={() => setIsMenuOpen(false)}
-                  className="bg-[#fe4203] text-white p-3.5 rounded-xl font-bold text-xs text-center shadow-xs active:scale-98 transition-transform"
+                  className={`p-3.5 rounded-xl font-bold text-xs text-center shadow-xs active:scale-98 transition-transform ${
+                    pathname === "/" ? "bg-[#fe4203] text-white" : "bg-slate-100 text-slate-800"
+                  }`}
                 >
-                  Beranda
+                  Home
                 </Link>
 
                 {/* Indeks */}
                 <Link 
                   href="/indeks" 
                   onClick={() => setIsMenuOpen(false)}
-                  className="bg-[#021B50] text-amber-400 p-3.5 rounded-xl font-bold text-xs text-center active:scale-98 transition-transform"
+                  className={`p-3.5 rounded-xl font-bold text-xs text-center active:scale-98 transition-transform ${
+                    pathname === "/indeks" ? "bg-[#021B50] text-amber-400" : "bg-slate-100 text-slate-800"
+                  }`}
                 >
                   Indeks
                 </Link>
 
-                {/* List Kategori Berita (Clean & Tanpa Panah) */}
-                {categories.map((cat) => (
-                  <Link
-                    key={cat.slug}
-                    href={`/kategori/${cat.slug}`}
-                    onClick={() => setIsMenuOpen(false)}
-                    className="bg-slate-50 hover:bg-slate-100 border border-slate-200/80 text-slate-800 p-3.5 rounded-xl font-semibold text-xs text-center active:scale-98 transition-all"
-                  >
-                    {cat.name}
-                  </Link>
-                ))}
+                {/* List Kategori Berita */}
+                {categories.map((cat) => {
+                  const categoryPath = `/kategori/${cat.slug}`;
+                  const isActive = pathname === categoryPath;
+                  return (
+                    <Link
+                      key={cat.slug}
+                      href={categoryPath}
+                      onClick={() => setIsMenuOpen(false)}
+                      className={`p-3.5 rounded-xl font-semibold text-xs text-center active:scale-98 transition-all ${
+                        isActive 
+                          ? "bg-[#021B50] text-white font-bold" 
+                          : "bg-slate-50 hover:bg-slate-100 border border-slate-200/80 text-slate-800"
+                      }`}
+                    >
+                      {cat.name}
+                    </Link>
+                  );
+                })}
               </div>
             </div>
 
           </div>
 
-          {/* Footer Mobile Drawer (Ikon IG & FB Paling Bawah) */}
+          {/* Footer Mobile Drawer (Ikon IG & FB) */}
           <div className="p-5 border-t border-slate-100 bg-slate-50/50 space-y-4">
             <div className="flex flex-col items-center gap-3">
               <span className="text-[11px] text-slate-500 font-semibold uppercase tracking-wider">Ikuti Media Sosial Suaraloka</span>
               
-              {/* Tombol IG & FB */}
               <div className="flex items-center justify-center gap-3">
                 <a 
                   href="https://instagram.com" 
