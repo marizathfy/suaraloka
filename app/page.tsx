@@ -1,6 +1,7 @@
 import HeroHeadline from "@/components/Headline";
 import CategoryNewsList from "@/components/CategoryNewsList";
 import PopularSidebar from "@/components/PopularSidebar";
+import InstagramEmbed from "@/components/InstagramEmbed"; // Import komponen embed IG
 
 export default function HomePage() {
   return (
@@ -19,9 +20,15 @@ export default function HomePage() {
         <section>
           <div className="flex flex-col lg:flex-row gap-8 justify-between items-start">
             
-            {/* KONTENA KIRI (Category Index) */}
-            <div className="flex-1 min-w-0 w-full">
+            {/* KONTENA KIRI (Kategori Berita + Widget Embed IG) */}
+            <div className="flex-1 min-w-0 w-full space-y-6">
+              
+              {/* Widget Embed Instagram Feed */}
+              <InstagramEmbed />
+
+              {/* List Berita Kategori */}
               <CategoryNewsList />
+
             </div>
 
             {/* KONTENA KANAN (Popular Sidebar 300px) */}
