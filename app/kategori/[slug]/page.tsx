@@ -82,7 +82,7 @@ async function CategoryContent({ params }: CategoryPageProps) {
               <div className="flex-1 min-w-0 flex flex-col justify-between h-full">
                 <div>
                   <div className="flex items-center gap-1.5 sm:gap-2 text-[10px] sm:text-xs mb-1">
-                    <span className="text-[#fe4203] uppercase tracking-wider bg-orange-50 px-2 py-0.5 rounded-md font-bold">
+                    <span className="text-[#fe4203] text-[10px] uppercase tracking-wider bg-orange-50 px-2 py-0.5 rounded-md font-bold">
                       {news.category || matchedCategory.name}
                     </span>
                     <span className="text-slate-300">•</span>

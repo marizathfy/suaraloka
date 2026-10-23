@@ -138,7 +138,7 @@ export default function IndeksPage() {
                   <div className="flex-1 min-w-0 flex flex-col justify-between h-full">
                     <div>
                       <div className="flex items-center gap-2 text-xs mb-1">
-                        <span className="font-bold text-[#fe4203] uppercase tracking-wide text-[11px]">
+                        <span className="font-bold text-[#fe4203] uppercase tracking-wide text-[10px]">
                           {news.category || 'NASIONAL'}
                         </span>
                         {(news.publishedAt || news.time) && (
@@ -150,14 +150,14 @@ export default function IndeksPage() {
                       </div>
 
                       <Link href={`/${news.slug}`}>
-                        <h2 className="font-bold text-xs sm:text-base text-slate-900 hover:text-[#fe4203] transition-colors line-clamp-2 leading-snug mb-1">
+                        <h2 className="font-bold text-[13px] sm:text-base text-slate-900 hover:text-[#fe4203] transition-colors line-clamp-2 leading-snug mb-1">
                           {news.title}
                         </h2>
                       </Link>
                     </div>
 
                     {(news.summary || news.excerpt) && (
-                      <p className="text-xs text-slate-500 line-clamp-1 leading-relaxed hidden sm:block">
+                      <p className="text-[11px] sm:text-xs text-slate-500 line-clamp-1 leading-relaxed mt-1">
                         {news.summary || news.excerpt}
                       </p>
                     )}

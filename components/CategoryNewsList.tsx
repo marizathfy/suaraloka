@@ -33,7 +33,7 @@ export default function CategoryNewsList() {
             <div className="flex flex-col justify-between py-0.5 w-full min-w-0">
               <div>
                 <div className="flex items-center gap-2 mb-1">
-                  <span className="text-[11px] font-bold text-[#fe4203] uppercase tracking-wider">
+                  <span className="text-[10px] font-bold text-[#fe4203] uppercase tracking-wider">
                     {news.category}
                   </span>
                   <span className="text-slate-300 text-xs">•</span>
@@ -43,7 +43,7 @@ export default function CategoryNewsList() {
                 </div>
 
                 <Link href={`/${news.slug}`}>
-                  <h4 className="text-slate-900 font-bold text-xs sm:text-sm md:text-base leading-snug hover:text-[#fe4203] transition-colors line-clamp-2">
+                  <h4 className="text-slate-900 font-bold text-[14px] sm:text-sm md:text-base leading-snug hover:text-[#fe4203] transition-colors line-clamp-2">
                     {news.title}
                   </h4>
                 </Link>
