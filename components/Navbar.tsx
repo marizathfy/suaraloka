@@ -178,7 +178,7 @@ export default function Navbar() {
             {categories.map((cat) => (
               <Link
                 key={cat.slug}
-                href={`/${cat.slug}`}
+                href={`/kategori/${cat.slug}`}
                 className="hover:text-[#fe4203] transition-colors whitespace-nowrap"
               >
                 {cat.name}
