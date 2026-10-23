@@ -199,7 +199,7 @@ export default async function NewsDetailPage({ params }: DetailPageProps) {
                     <span className="text-[10px] font-bold text-[#fe4203] uppercase tracking-wider block mb-1">
                       {item.category}
                     </span>
-                    <h4 className="text-[13px] font-semibold text-slate-800 group-hover:text-[#fe4203] line-clamp-2 leading-snug">
+                    <h4 className="text-[14px] font-semibold text-slate-800 group-hover:text-[#fe4203] line-clamp-2 leading-snug">
                       {item.title}
                     </h4>
                     <span className="text-[10px] text-slate-400 mt-1 block">{item.publishedAt}</span>
