@@ -40,10 +40,10 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
 
   return (
     <main className="min-h-screen pb-12">
-      <div className="max-w-[1075px] mx-auto py-6">
+      <div className="max-w-[1075px] mx-auto py-6 sm:px-0">
         
-        {/* Header Kategori Modern (Tanpa Beranda) */}
-        <div className="mb-8 pb-4 border-b border-slate-200 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+        {/* Header Kategori: Judul di Kiri, Badge Jumlah Berita di Kanan */}
+        <div className="mb-8 pb-4 border-b border-slate-200 flex flex-row items-end sm:items-center justify-between gap-4">
           <div>
             <div className="flex items-center gap-2 mb-1">
               <span className="w-2 h-5 bg-[#fe4203] rounded-full inline-block"></span>
@@ -53,7 +53,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
               {matchedCategory.name}
             </h1>
           </div>
-          <span className="text-xs font-semibold text-slate-600 bg-white px-3.5 py-1.5 rounded-full border border-slate-200 shadow-xs self-start sm:self-auto">
+          <span className="text-xs font-semibold text-slate-600 bg-white px-3.5 py-1.5 rounded-full border border-slate-200 shadow-xs shrink-0">
             {filteredNews.length} Berita Tersedia
           </span>
         </div>
@@ -61,47 +61,47 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
         {/* Layout Utama 2 Kolom (List Berita + Sidebar Populer) */}
         <div className="flex flex-col lg:flex-row gap-8 justify-between items-start">
           
-          {/* KONTEN LIST BERITA KATEGORI (KIRI) - Desain Card Modern */}
+          {/* KONTEN LIST BERITA KATEGORI (KIRI) */}
           <div className="flex-1 min-w-0 w-full space-y-4">
             {filteredNews.length > 0 ? (
               filteredNews.map((news, index) => (
                 <article 
                   key={`cat-item-${news.id || index}`} 
-                  className="group bg-white p-4 sm:p-5 rounded-2xl border border-slate-200/80 shadow-xs hover:shadow-md hover:border-slate-300 transition-all duration-300 flex flex-col sm:flex-row gap-4 items-start"
+                  className="group bg-white p-3.5 sm:p-5 rounded-2xl border border-slate-200/80 shadow-xs hover:shadow-md hover:border-slate-300 transition-all duration-300 flex flex-row gap-3.5 sm:gap-4 items-start"
                 >
-                  {/* Thumbnail Berita dengan efek zoom */}
-                  <div className="relative w-full sm:w-44 h-40 sm:h-28 bg-slate-100 rounded-xl overflow-hidden shrink-0">
+                  {/* Thumbnail Berita Kiri */}
+                  <div className="relative w-28 h-20 sm:w-44 sm:h-28 bg-slate-100 rounded-xl overflow-hidden shrink-0">
                     <Image
                       src={news.imageUrl}
                       alt={news.title}
                       fill
-                      sizes="(max-width: 640px) 100vw, 176px"
+                      sizes="(max-width: 640px) 112px, 176px"
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                   </div>
 
-                  {/* Meta & Judul */}
+                  {/* Meta & Judul Kanan */}
                   <div className="flex-1 min-w-0 flex flex-col justify-between h-full">
                     <div>
-                      <div className="flex items-center gap-2 text-xs mb-1.5">
-                        <span className="font-extrabold text-[#fe4203] uppercase tracking-wider text-[10px] bg-orange-50 px-2.5 py-0.5 rounded-md">
+                      <div className="flex items-center gap-1.5 sm:gap-2 text-[10px] sm:text-xs mb-1">
+                        <span className="text-[#fe4203] uppercase tracking-wider bg-orange-50 px-2 py-0.5 rounded-md">
                           {news.category || matchedCategory.name}
                         </span>
                         <span className="text-slate-300">•</span>
-                        <span className="text-slate-400 text-[11px] font-medium">{news.publishedAt || "Terbaru"}</span>
+                        <span className="text-slate-400 font-medium">{news.publishedAt || "Terbaru"}</span>
                       </div>
 
                       <Link href={`/${news.slug}`}>
-                        <h2 className="font-bold text-sm sm:text-base text-slate-900 group-hover:text-[#fe4203] transition-colors line-clamp-2 leading-snug">
+                        <h2 className="font-bold text-xs sm:text-base text-slate-900 group-hover:text-[#fe4203] transition-colors line-clamp-2 leading-snug">
                           {news.title}
                         </h2>
                       </Link>
                     </div>
 
-                    {news.summary && (
-                      <p className="text-xs text-slate-500 line-clamp-1 leading-relaxed mt-2 font-normal">
+                   {news.summary && (
+                    <p className="text-[11px] sm:text-xs text-slate-500 line-clamp-1 leading-relaxed mt-1 font-normal">
                         {news.summary}
-                      </p>
+                    </p>
                     )}
                   </div>
                 </article>
