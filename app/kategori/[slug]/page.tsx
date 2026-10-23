@@ -136,7 +136,7 @@ function CategorySkeleton() {
 // Halaman utama yang membungkus dengan Suspense agar navigasi instan & tidak error
 export default function CategoryPage({ params }: CategoryPageProps) {
   return (
-    <main className="min-h-screen pb-12 bg-white">
+    <main className="min-h-screen pb-12 bg-white py-6">
       <div className="max-w-[1075px] mx-auto sm:px-0">
         <Suspense fallback={<CategorySkeleton />}>
           <CategoryContent params={params} />
