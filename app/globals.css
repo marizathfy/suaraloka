@@ -3,14 +3,21 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  color-scheme: light only !important;
 }
 
-/* Padam/Buang media query dark mode supaya ia tidak memaksa warna hitam */
-
-body {
+/* Memaksa elemen HTML & Body selalu berlatar putih */
+html, body {
   background-color: #ffffff !important;
   color: #171717 !important;
+  color-scheme: light only !important;
   font-family: Arial, Helvetica, sans-serif;
   margin: 0;
   padding: 0;
+}
+
+/* Mencegah Browser Samsung/MIUI/POCO membalikkan warna gambar/logo secara otomatis */
+img, svg, video {
+  filter: none !important;
+  forced-color-adjust: none !important;
 }

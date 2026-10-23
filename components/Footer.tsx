@@ -66,12 +66,6 @@ export default function Footer() {
                   {cat.name}
                 </Link>
               ))}
-              <Link href="/tentang-kami" className="hover:text-[#fe4203] transition-colors py-0.5">
-                Tentang Kami
-              </Link>
-              <Link href="/disclaimer" className="hover:text-[#fe4203] transition-colors py-0.5">
-                Disclaimer
-              </Link>
             </div>
           </div>
 
@@ -110,6 +104,10 @@ export default function Footer() {
             <span>•</span>
             <Link href="/disclaimer" className="hover:text-white transition-colors">
               Disclaimer
+            </Link>
+            <span>•</span>
+            <Link href="/redaksi" className="hover:text-white transition-colors">
+              Redaksi
             </Link>
           </div>
         </div>
