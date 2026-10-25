@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 
-// Data dummy postingan IG Suaraloka
+// Data dummy postingan IG Suaraloka (bisa menampung banyak data dan bisa digeser kesamping)
 const igPosts = [
   {
     id: "post-1",
@@ -36,11 +36,19 @@ const igPosts = [
     link: "https://www.instagram.com/suaraloka.id",
     isVideo: false,
   },
+  {
+    id: "post-5",
+    title: "VIRAL!",
+    subtitle: "Aksi Kreatif Warga Lokal Manfaatkan Teknologi di Desa",
+    imageUrl: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=500&auto=format&fit=crop",
+    link: "https://www.instagram.com/suaraloka.id",
+    isVideo: false,
+  },
 ];
 
 export default function InstagramEmbed() {
   return (
-    <div className="bg-white p-4 sm:p-5 rounded-2xl border-slate-200/90 shadow-xs">
+    <div className="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200/90 shadow-xs">
       
       {/* 1. Header Profile Instagram */}
       <div className="flex items-center justify-between mb-4">
@@ -81,7 +89,7 @@ export default function InstagramEmbed() {
           href="https://www.instagram.com/suaraloka.id" 
           target="_blank" 
           rel="noopener noreferrer"
-          className="flex items-center gap-1.5 bg-[#0095f6] hover:bg-[#1877f2] text-white text-xs font-bold px-3.5 py-1.5 rounded-lg transition-colors shadow-xs"
+          className="flex items-center gap-1.5 bg-[#0095f6] hover:bg-[#1877f2] text-white text-xs font-bold px-3.5 py-1.5 rounded-lg transition-colors shadow-xs shrink-0"
         >
           <span>Follow</span>
           <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
@@ -90,21 +98,21 @@ export default function InstagramEmbed() {
         </a>
       </div>
 
-      {/* 2. Grid Postingan Instagram */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+      {/* 2. List Postingan Instagram (Horizontal Scroll ke Samping) */}
+      <div className="flex overflow-x-auto gap-3 pb-2 pt-1 scrollbar-thin scrollbar-thumb-slate-200 scrollbar-track-transparent snap-x">
         {igPosts.map((post) => (
           <a
             key={post.id}
             href={post.link}
             target="_blank"
             rel="noopener noreferrer"
-            className="group relative aspect-3/4 rounded-xl overflow-hidden bg-slate-900 border border-slate-100 shadow-xs block"
+            className="group relative w-[140px] sm:w-[160px] aspect-3/4 rounded-xl overflow-hidden bg-slate-900 border border-slate-100 shadow-xs shrink-0 snap-start block"
           >
             <Image
               src={post.imageUrl}
               alt={post.subtitle}
               fill
-              sizes="(max-width: 640px) 50vw, 25vw"
+              sizes="160px"
               className="object-cover group-hover:scale-105 transition-transform duration-500 opacity-90 group-hover:opacity-100"
             />
 
@@ -123,7 +131,7 @@ export default function InstagramEmbed() {
                 <span className="inline-block bg-[#fe4203] text-white text-[9px] font-extrabold px-1.5 py-0.5 rounded uppercase tracking-wider mb-1">
                   {post.title}
                 </span>
-                <p className="text-white text-[13px] font-bold leading-tight line-clamp-2 drop-shadow-xs">
+                <p className="text-white text-[12px] font-bold leading-tight line-clamp-2 drop-shadow-xs">
                   {post.subtitle}
                 </p>
               </div>
