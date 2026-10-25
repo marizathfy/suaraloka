@@ -1,23 +1,43 @@
 @import "tailwindcss";
 
+/* 1. Kunci variabel root dan matikan dark mode otomatis */
 :root {
   --background: #ffffff;
-  --foreground: #171717;
-  color-scheme: light only !important;
+  --foreground: #0f172a;
+  color-scheme: light;
 }
 
-/* Memaksa elemen HTML & Body selalu berlatar putih */
-html, body {
+/* 2. Paksa background HTML & BODY tetap putih bersih di semua device */
+html, 
+body {
   background-color: #ffffff !important;
-  color: #171717 !important;
-  color-scheme: light only !important;
-  font-family: Arial, Helvetica, sans-serif;
+  color: #0f172a !important;
+  color-scheme: light !important;
+  font-family: var(--font-inter), system-ui, sans-serif;
   margin: 0;
   padding: 0;
 }
 
-/* Mencegah Browser Samsung/MIUI/POCO membalikkan warna gambar/logo secara otomatis */
+/* 3. Mencegah Auto Dark Mode di browser Android/Samsung/Xiaomi membalikkan warna elemen & gambar */
+html *, 
+body * {
+  forced-color-adjust: none !important;
+}
+
 img, svg, video {
   filter: none !important;
   forced-color-adjust: none !important;
+}
+
+/* 4. Matikan media query prefers-color-scheme jika Tailwind v4 memanggilnya */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #ffffff;
+    --foreground: #0f172a;
+    color-scheme: light;
+  }
+  html, body {
+    background-color: #ffffff !important;
+    color: #0f172a !important;
+  }
 }

@@ -63,24 +63,22 @@ export default function Navbar() {
 
   return (
     <>
-      {/* Spacer transparan agar konten di bawahnya tidak tertutup oleh header fixed */}
-      <div className="h-[65px] md:h-[65px] w-full" />
+      {/* Spacer transparan agar konten di bawahnya tidak tertutup oleh logo header fixed */}
+      <div className="h-[60px] md:h-[75px] w-full" />
 
-      {/* HEADER UTAMA: Fixed di atas dengan latar belakang putih profesional */}
+      {/* 1. HEADER ATAS (LOGO, SEARCH, SOSMED): Bersifat Fixed / Menempel Terus saat Scroll */}
       <header className="fixed top-0 left-0 right-0 z-[999] w-full bg-white shadow-sm transition-all duration-300 border-b border-slate-200">
-        
-        {/* Main Header (Logo, Search, Sosmed) */}
         <div className="max-w-[1075px] mx-auto flex items-center justify-between px-4 py-2.5">
           
-          {/* Logo Kiri */}
+          {/* Logo Kiri: Desktop tepat 200px */}
           <Link href="/" className="flex items-center shrink-0 group">
             <Image 
               src="/logo.png" 
               alt="Suaraloka.id" 
-              width={180} 
-              height={70} 
+              width={200} 
+              height={85} 
               priority 
-              className="object-contain w-32 sm:w-40 md:w-44 h-auto transition-transform duration-300 group-hover:scale-102" 
+              className="object-contain w-36 sm:w-44 md:w-[200px] h-auto transition-transform duration-300 group-hover:scale-102" 
             />
           </Link>
           
@@ -182,10 +180,10 @@ export default function Navbar() {
         )}
       </header>
 
-      {/* ================= DESKTOP NAVIGATION BAR (MENU KATEGORI BAWAH) ================= */}
-      <nav className="bg-[#021B50] text-white hidden md:block py-2.5 border-t border-blue-900/50 shadow-inner w-full">
-        <div className="max-w-[1080px] mx-auto flex items-center justify-between px-4 text-xs font-semibold">
-          <div className="flex space-x-5 overflow-x-auto scrollbar-none py-1 items-center">
+      {/* 2. MENU KATEGORI BAWAH (NAV): Mengalir Normal, Ikut Hilang/Ter-scroll ke Atas */}
+      <nav className="bg-[#021B50] text-white hidden md:block py-2.5 shadow-inner w-full relative z-40">
+        <div className="max-w-[1075px] mx-auto flex items-center justify-between px-4 text-xs font-semibold">
+          <div className="flex space-x-6 overflow-x-auto scrollbar-none py-0.5 items-center">
             
             {/* Menu Home */}
             <Link 
@@ -226,7 +224,7 @@ export default function Navbar() {
           </div>
 
           {currentTime && (
-            <div className="hidden lg:flex items-center gap-2 text-[11px] text-slate-300 shrink-0 pl-4 border-l border-blue-900">
+            <div className="hidden lg:flex items-center gap-2 text-[11px] text-slate-300 shrink-0 pl-4 border-l border-blue-900/60">
               <svg className="w-3.5 h-3.5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
@@ -238,7 +236,7 @@ export default function Navbar() {
 
       {/* ================= MOBILE APP DRAWER MENU ================= */}
       {isMenuOpen && (
-        <div className="fixed inset-0 z-[100] md:hidden bg-white text-slate-800 flex flex-col justify-between overflow-y-auto animate-in fade-in duration-200">
+        <div className="fixed inset-0 z-[1000] md:hidden bg-white text-slate-800 flex flex-col justify-between overflow-y-auto animate-in fade-in duration-200">
           
           {/* Header Drawer Sticky */}
           <div className="p-4 border-b border-slate-100 flex items-center justify-between sticky top-0 bg-white/95 backdrop-blur-md z-10">
@@ -246,10 +244,10 @@ export default function Navbar() {
               <Image 
                 src="/logo.png" 
                 alt="Suaraloka.id" 
-                width={140} 
-                height={50} 
+                width={150} 
+                height={55} 
                 priority
-                className="object-contain w-32 h-auto" 
+                className="object-contain w-36 h-auto" 
               />
             </Link>
             

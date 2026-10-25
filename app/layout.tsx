@@ -9,7 +9,6 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
-// 1. Tambahkan viewport untuk mengunci color-scheme sistem
 export const viewport: Viewport = {
   themeColor: "#ffffff",
   colorScheme: "light",
@@ -28,15 +27,15 @@ export default function RootLayout({
   return (
     <html lang="id" className={`${inter.variable} light`} style={{ colorScheme: 'light' }}>
       <head>
-        {/* Meta tag untuk mematikan paksaan dark mode di Samsung Internet & Chrome Mobile */}
-        <meta name="color-scheme" content="light only" />
+        {/* Meta tag resmi pembatas dark mode */}
+        <meta name="color-scheme" content="light" />
         <meta name="supported-color-schemes" content="light" />
       </head>
       <body className="bg-white min-h-screen text-slate-900 antialiased font-sans">
         <Navbar />
-        <div className="max-w-[1075px] mx-auto px-4">
+        <main className="max-w-[1075px] mx-auto px-4 bg-white">
           {children}
-        </div>
+        </main>
         <Footer />
       </body>
     </html>
