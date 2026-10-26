@@ -29,7 +29,7 @@ img, svg, video {
   forced-color-adjust: none !important;
 }
 
-/* 4. Matikan media query prefers-color-scheme jika Tailwind v4 memanggilnya */
+/* 4. Mencegah sistem mendeteksi dark mode */
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #ffffff;

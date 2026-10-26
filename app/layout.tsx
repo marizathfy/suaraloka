@@ -15,7 +15,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "Suaraloka.com - Portal Berita Terpercaya",
+  title: "suaraloka.id - Portal Berita Terpercaya",
   description: "Portal berita terkini dan teraktual",
 };
 
@@ -27,7 +27,7 @@ export default function RootLayout({
   return (
     <html lang="id" className={`${inter.variable} light`} style={{ colorScheme: 'light' }}>
       <head>
-        {/* Meta tag resmi pembatas dark mode */}
+        {/* Meta tag untuk mengunci mode terang di level browser mobile */}
         <meta name="color-scheme" content="light" />
         <meta name="supported-color-schemes" content="light" />
       </head>

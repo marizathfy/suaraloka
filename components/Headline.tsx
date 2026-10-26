@@ -85,9 +85,9 @@ export default function HeroHeadline() {
 
         </div>
 
-        {/* ================= SEBELAH KANAN / BAWAH: BANNER IKLAN 300x600 (TAMPIL DI SEMUA PERANGKAT) ================= */}
+        {/* ================= SEBELAH KANAN / BAWAH: BANNER IKLAN RESPONSIF ================= */}
         <div className="w-full lg:w-[300px] shrink-0 flex justify-center mx-auto">
-          <div className="sticky top-20 w-[300px] h-[600px] bg-slate-100 rounded-2xl p-6 border-2 border-dashed border-slate-300 flex flex-col justify-between text-center relative shadow-xs box-border">
+          <div className="sticky top-20 w-full max-w-[300px] lg:w-[300px] h-[550px] lg:h-[600px] bg-slate-100 rounded-2xl p-5 sm:p-6 border-2 border-dashed border-slate-300 flex flex-col justify-between text-center relative shadow-xs box-border">
             
             {/* Label Atas */}
             <div className="flex items-center justify-between text-slate-400 text-[10px] font-bold tracking-wider uppercase">
@@ -97,17 +97,17 @@ export default function HeroHeadline() {
 
             {/* Isi Banner Tulisan Saja */}
             <div className="flex flex-col items-center justify-center my-auto space-y-4">
-              <div className="w-16 h-16 rounded-full bg-orange-100 text-[#fe4203] flex items-center justify-center font-black text-xl shadow-xs">
+              <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-orange-100 text-[#fe4203] flex items-center justify-center font-black text-xl shadow-xs">
                 ADS
               </div>
               <div className="space-y-2">
-                <span className="text-xs font-bold text-[#fe4203] uppercase tracking-widest bg-orange-50 px-2.5 py-1 rounded-full border border-orange-100">
+                <span className="text-[11px] sm:text-xs font-bold text-[#fe4203] uppercase tracking-widest bg-orange-50 px-2.5 py-1 rounded-full border border-orange-100">
                   Pasang Iklan Anda
                 </span>
-                <h3 className="text-slate-900 font-black text-xl sm:text-2xl leading-snug tracking-tight">
+                <h3 className="text-slate-900 font-black text-lg sm:text-2xl leading-snug tracking-tight">
                   Mau Iklan Bisa Di Sini <br/><span className="text-[#fe4203]">suaraloka.id</span>
                 </h3>
-                <p className="text-xs text-slate-500 font-medium pt-2">
+                <p className="text-xs text-slate-500 font-medium pt-1 sm:pt-2">
                   Jangkau pembaca lebih luas bersama portal berita terpercaya.
                 </p>
               </div>
