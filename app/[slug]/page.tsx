@@ -200,12 +200,12 @@ export default async function NewsDetailPage({ params }: DetailPageProps) {
 
             <NewsComment slug={slug} />
 
-            {/* SEKSI BERITA TERKAIT */}
+            {/* SEKSI BERITA TERKAIT (Diubah menjadi 2 Kolom di Mobile & Desktop) */}
             <div className="mt-10 pt-6 border-t-2 border-slate-900">
               <h3 className="font-bold text-slate-900 text-base uppercase tracking-wider mb-4">
                 Berita Terkait
               </h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              <div className="grid grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-4">
                 {relatedNews.map((item) => (
                   <Link key={`rel-${item.id}`} href={`/${item.slug}`} className="group rounded-lg hover:bg-slate-50 transition-colors flex flex-col">
                     
@@ -222,7 +222,7 @@ export default async function NewsDetailPage({ params }: DetailPageProps) {
                     <span className="text-[10px] font-bold text-[#fe4203] uppercase tracking-wider block mb-1">
                       {item.category}
                     </span>
-                    <h4 className="text-[14px] font-semibold text-slate-800 group-hover:text-[#fe4203] line-clamp-2 leading-snug">
+                    <h4 className="text-[12px] sm:text-[14px] font-semibold text-slate-800 group-hover:text-[#fe4203] line-clamp-2 leading-snug">
                       {item.title}
                     </h4>
                     <span className="text-[10px] text-slate-400 mt-1 block">{item.publishedAt}</span>
