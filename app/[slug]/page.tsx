@@ -132,15 +132,21 @@ export default async function NewsDetailPage({ params }: DetailPageProps) {
               </div>
             </div>
 
-            {/* Gambar Utama Berita */}
-            <div className="relative w-full h-[250px] sm:h-[380px] md:h-[450px] rounded-xl overflow-hidden mb-6 bg-slate-100">
-              <Image
-                src={news.imageUrl}
-                alt={news.title}
-                fill
-                priority
-                className="object-cover"
-              />
+            {/* Gambar Utama Berita + Meta Deskripsi 1 Baris */}
+            <div className="mb-6">
+              <div className="relative w-full h-[250px] sm:h-[380px] md:h-[450px] rounded-xl overflow-hidden bg-slate-100">
+                <Image
+                  src={news.imageUrl}
+                  alt={news.title}
+                  fill
+                  priority
+                  className="object-cover"
+                />
+              </div>
+              {/* Meta Deskripsi / Caption Foto 1 Baris */}
+              <p className="text-xs text-slate-500 mt-2 px-1 italic">
+                Ilustrasi / Foto: Dok. suaraloka.id ({news.category})
+              </p>
             </div>
 
             {/* Ringkasan Berita */}
@@ -156,6 +162,23 @@ export default async function NewsDetailPage({ params }: DetailPageProps) {
               <p>
                 Para pakar menilai keberlanjutan dari inisiatif ini akan membawa dampak positif bagi perkembangan ekosistem terkait. Dalam beberapa bulan ke depan, implementasi secara menyeluruh akan terus dipantau guna mengevaluasi efektivitas serta respons dari masyarakat.
               </p>
+
+              {/* EMBED YOUTUBE DI DALAM BODY ARTIKEL */}
+              <div className="my-6">
+                <div className="relative w-full aspect-video rounded-xl overflow-hidden shadow-sm bg-slate-900">
+                  <iframe
+                    className="absolute inset-0 w-full h-full"
+                    src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                    title="YouTube video player"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  ></iframe>
+                </div>
+                <p className="text-[11px] text-slate-400 text-center mt-1.5 italic">
+                  Video: Konferensi pers dan pembahasan terkait perkembangan topik utama. (YouTube/Suaraloka Official)
+                </p>
+              </div>
+
               <p>
                 "Kami berkomitmen untuk terus menghadirkan inovasi dan keterbukaan informasi bagi seluruh pemangku kepentingan," ujar salah satu perwakilan resmi saat ditemui di lokasi kegiatan.
               </p>
@@ -186,7 +209,7 @@ export default async function NewsDetailPage({ params }: DetailPageProps) {
                 {relatedNews.map((item) => (
                   <Link key={`rel-${item.id}`} href={`/${item.slug}`} className="group rounded-lg hover:bg-slate-50 transition-colors flex flex-col">
                     
-                    {/* Kotak Gambar dengan Aspect Ratio Rasmi supaya TIDAK GEPENG */}
+                    {/* Kotak Gambar dengan Aspect Ratio Resmi */}
                     <div className="relative w-full aspect-video rounded-lg overflow-hidden mb-2 bg-slate-100">
                       <Image
                         src={item.imageUrl}
@@ -210,7 +233,7 @@ export default async function NewsDetailPage({ params }: DetailPageProps) {
 
           </article>
 
-          {/* KONTENA KANAN: Popular Sidebar 300px (Sticky) */}
+          {/* KONTEN KANAN: Popular Sidebar 300px (Sticky) */}
           <div className="w-full lg:w-[300px] shrink-0 mx-auto lg:mx-0 sticky top-20 z-10">
             <PopularSidebar />
           </div>
